@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-import {FeatureA} from '@co/feature';
+interface State {
+  component?: React.ReactNode;
+}
 
-class App extends Component {
+class App extends Component<{}, State> {
+  state: State = {
+    component: undefined,
+  };
+
   render() {
     return (
       <div className="App">
@@ -14,8 +20,9 @@ class App extends Component {
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
 
-          <FeatureA message={'Hello World'}/>
+          {this.state.component}
 
+          <button onClick={this.loadFeature}>Load Feature</button>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -28,6 +35,14 @@ class App extends Component {
       </div>
     );
   }
+
+  private loadFeature = async () => {
+    const { Feature } = await import("@co/feature");
+
+    this.setState({
+      component: <Feature message={"Hello World"} />,
+    });
+  };
 }
 
 export default App;
