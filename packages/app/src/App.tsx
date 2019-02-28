@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { add } from '@co/shared';
 
 interface State {
   isFeatureALoaded: boolean;
@@ -33,6 +33,8 @@ class App extends Component<{}, State> {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
+
+          <p>Using a shared feature: {add(2, 3)}</p>
 
           {this.state.isFeatureALoaded ? (
             <Suspense fallback={'Loading Feature A'}>
