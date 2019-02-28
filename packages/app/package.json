@@ -11,7 +11,8 @@
     "react-dom": "^16.8.3",
     "react-scripts": "2.1.5",
     "typescript": "3.3.3333",
-    "@co/feature": "*"
+    "@co/feature-a": "*",
+    "@co/feature-b": "*"
   },
   "scripts": {
     "start": "react-scripts start",

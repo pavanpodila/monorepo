@@ -1,0 +1,14 @@
+{
+  "name": "@co/shared",
+  "version": "1.0.0",
+  "types": "build/index.d.ts",
+  "main": "build/index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  },
+  "scripts": {
+    "start": "tsc --watch"
+  }
+}

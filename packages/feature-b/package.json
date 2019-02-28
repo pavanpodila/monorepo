@@ -1,11 +1,12 @@
 {
-  "name": "@co/feature",
+  "name": "@co/feature-b",
   "version": "1.0.0",
   "types": "build/index.d.ts",
   "main": "build/index.js",
   "dependencies": {
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "@co/shared": "*"
   },
   "devDependencies": {
     "@types/react": "^16.8.5",
