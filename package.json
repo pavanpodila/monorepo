@@ -1,0 +1,16 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  },
+  "scripts": {
+    "start": "lerna run --parallel start"
+  }
+}
