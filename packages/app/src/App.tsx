@@ -1,23 +1,13 @@
-import React, { Component, Suspense } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import { add } from '@co/shared';
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
+import { FeatureAComponent } from './featureA.route';
+import { FeatureBComponent } from './featureB.route';
 
 interface State {
   isFeatureALoaded: boolean;
   isFeatureBLoaded: boolean;
 }
-
-const LazyFeatureA = React.lazy(async () => {
-  const { Feature } = await import('@co/feature-a');
-
-  return { default: () => <Feature message={'Hello World'} /> };
-});
-
-const LazyFeatureB = React.lazy(async () => {
-  const { Feature } = await import('@co/feature-b');
-
-  return { default: () => <Feature /> };
-});
 
 class App extends Component<{}, State> {
   state: State = {
@@ -27,55 +17,39 @@ class App extends Component<{}, State> {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-
+      <BrowserRouter>
+        <div className="App">
+          <h2>
+            1. Using <code>@co/shared</code> package
+          </h2>
           <p>Using a shared feature: {add(2, 3)}</p>
 
-          {this.state.isFeatureALoaded ? (
-            <Suspense fallback={'Loading Feature A'}>
-              <LazyFeatureA />
-            </Suspense>
-          ) : null}
+          <h2>2. Using routes for on-demand features</h2>
+          <ul>
+            <li>
+              <NavLink to={'/feature-a'}>Load Feature A</NavLink>
+            </li>
+            <li>
+              <NavLink to={'/feature-b'}>Load Feature B</NavLink>
+            </li>
+          </ul>
 
-          {this.state.isFeatureBLoaded ? (
-            <Suspense fallback={'Loading Feature B'}>
-              <LazyFeatureB />
-            </Suspense>
-          ) : null}
-
-          <button
-            onClick={this.loadFeatureA}
-            disabled={this.state.isFeatureALoaded}
-          >
-            Load Feature
-          </button>
-
-          <button
-            onClick={this.loadFeatureB}
-            disabled={this.state.isFeatureBLoaded}
-          >
-            Load Feature
-          </button>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+          <Switch>
+            <Route
+              path={'/feature-a'}
+              exact={true}
+              component={FeatureAComponent}
+            />
+            <Route
+              path={'/feature-b'}
+              exact={true}
+              component={FeatureBComponent}
+            />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
-
-  private loadFeatureA = () => this.setState({ isFeatureALoaded: true });
-  private loadFeatureB = () => this.setState({ isFeatureBLoaded: true });
 }
 
 export default App;

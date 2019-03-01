@@ -12,6 +12,6 @@
   },
   "scripts": {
     "start": "lerna run --parallel start"
-  }
+  },
+  "dependencies": {}
 }
-

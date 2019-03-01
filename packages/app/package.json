@@ -3,17 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "@co/feature-a": "*",
+    "@co/feature-b": "*",
+    "@co/shared": "*",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "react-scripts": "2.1.5",
+    "typescript": "3.3.3333",
+    "@types/react-router-dom": "^4.3.1",
     "@types/jest": "24.0.9",
     "@types/node": "11.9.5",
     "@types/react": "16.8.5",
-    "@types/react-dom": "16.8.2",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5",
-    "typescript": "3.3.3333",
-    "@co/feature-a": "*",
-    "@co/feature-b": "*",
-    "@co/shared": "*"
+    "@types/react-dom": "16.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
