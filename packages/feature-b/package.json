@@ -14,6 +14,7 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
-    "start": "tsc --watch"
+    "start": "npm run tsc --watch",
+    "tsc": "tsc"
   }
 }
